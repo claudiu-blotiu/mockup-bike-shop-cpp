@@ -1,0 +1,4 @@
+1 Alex 0742 email parola home AlexA
+2 bogdan 0744 email parole work bogdanB
+3 Cristi 0733 email parola Job cristC
+4 Dumi 0742 email parole Acasa dumiD

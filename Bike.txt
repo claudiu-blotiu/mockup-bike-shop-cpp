@@ -1,0 +1,3 @@
+1 1 100 MTB pegas
+2 2 101 BMX Alice
+3 3 900 BMX Shimano
