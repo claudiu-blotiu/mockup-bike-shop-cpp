@@ -58,10 +58,27 @@ string OrderDetails::description()
 {
 	string text = "";
 
-	text+="OrderDetails_id:"
+	text += "OrderDetails_id:" + to_string(this->OrderDetails_id) + "\n";
+	text += "OrderDetails_order_Id: " + to_string(this->OrderDetails_order_Id) + "\n";
+	text += "OrderDetails_Bike_Id: " + to_string(this->OrderDetails_Bike_Id) + "\n";
+	text += "OrderDetails_price: " + to_string(this->OrderDetails_price) + "\n";
+	text += "OrderDetails_quantity: " + to_string(this->OrderDetails_quantity) + "\n";
+
+	return text;
 }
 
-string OrderDetails::toSave();
+string OrderDetails::toSave()
+{
+	string text = "";
+
+	text += to_string(this->OrderDetails_id) + " ";
+	text += to_string(this->OrderDetails_order_Id) + " ";
+	text += to_string(this->OrderDetails_Bike_Id) + " ";
+	text += to_string(this->OrderDetails_price) + " ";
+	text += to_string(this->OrderDetails_quantity);
+
+	return text;
+}
 
 
 

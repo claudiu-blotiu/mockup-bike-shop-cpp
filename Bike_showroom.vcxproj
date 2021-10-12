@@ -147,6 +147,7 @@
     <ClCompile Include="ControlCustomer.cpp" />
     <ClCompile Include="ControlInsurance.cpp" />
     <ClCompile Include="ControlOrder.cpp" />
+    <ClCompile Include="ControlOrderDetails.cpp" />
     <ClCompile Include="ControlPayment.cpp" />
     <ClCompile Include="ControlPermission.cpp" />
     <ClCompile Include="ControlRole.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="ControlCustomer.h" />
     <ClInclude Include="ControlInsurance.h" />
     <ClInclude Include="ControlOrder.h" />
+    <ClInclude Include="ControlOrderDetails.h" />
     <ClInclude Include="ControlPayment.h" />
     <ClInclude Include="ControlPermission.h" />
     <ClInclude Include="ControlRole.h" />
@@ -189,6 +191,7 @@
     <Text Include="Customer.txt" />
     <Text Include="Insurance.txt" />
     <Text Include="Order.txt" />
+    <Text Include="OrderDetails.txt" />
     <Text Include="Payment.txt" />
     <Text Include="Permission.txt" />
     <Text Include="Role.txt" />

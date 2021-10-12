@@ -78,6 +78,9 @@
     <ClCompile Include="OrderDetails.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ControlOrderDetails.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
@@ -140,6 +143,9 @@
     <ClInclude Include="OrderDetails.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ControlOrderDetails.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="User.txt">
@@ -167,6 +173,9 @@
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="Order.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="OrderDetails.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
