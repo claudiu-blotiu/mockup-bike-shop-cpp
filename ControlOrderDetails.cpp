@@ -32,9 +32,32 @@ int ControlOrderDetails::poz(int OrderDetails_order_Id)
 	return -1;
 }
 
+int ControlOrderDetails::poz_1(int id)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (detalii_comanda[i].getOrderDetails_id() == id)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
 void ControlOrderDetails::Delete(int OrderDetails_order_Id)
 {
 	int p = poz(OrderDetails_order_Id);
+	for (int i = p; i < size - 1; i++)
+	{
+		detalii_comanda[i] = detalii_comanda[i + 1];
+	}
+	size--;
+}
+
+void ControlOrderDetails::Delete_2(int id)
+{
+	int p = poz_1(id);
+
 	for (int i = p; i < size - 1; i++)
 	{
 		detalii_comanda[i] = detalii_comanda[i + 1];
@@ -76,30 +99,49 @@ void ControlOrderDetails::updateBikeId(int OrderDetails_order_Id, int newBikeId)
 	}
 }
 
-void ControlOrderDetails::updatePrice(int OrderDetails_order_Id, int newPrice)
-{
-	int p = poz(OrderDetails_order_Id);
-	if (p != -1)
-	{
-		detalii_comanda[p].setOrderDetails_price(newPrice);
-	}
-	else
-	{
-		cout << "The Price is wrong" << endl;
-	}
-}
+//void ControlOrderDetails::updatePrice(int OrderDetails_order_Id, int newPrice)
+//{
+//	int p = poz(OrderDetails_order_Id);
+//	if (p != -1)
+//	{
+//		detalii_comanda[p].setOrderDetails_price(newPrice);
+//	}
+//	else
+//	{
+//		cout << "The Price is wrong" << endl;
+//	}
+//}
+//
+//void ControlOrderDetails::updateQuantity(int OrderDetails_order_Id, int newQuantity)
+//{
+//	int p = poz(OrderDetails_order_Id);
+//	if (p != -1)
+//	{
+//		detalii_comanda[p].setOrderDetails_quantity(newQuantity);
+//	}
+//	else
+//	{
+//		cout << "Wrong quantity." << endl;
+//	}
+//}
 
-void ControlOrderDetails::updateQuantity(int OrderDetails_order_Id, int newQuantity)
-{
-	int p = poz(OrderDetails_order_Id);
-	if (p != -1)
-	{
-		detalii_comanda[p].setOrderDetails_quantity(newQuantity);
+
+OrderDetails* ControlOrderDetails::getProducts(int OrderDetails_order_Id, int& number) {
+
+	number = 0;
+	OrderDetails* ordersDetails = new OrderDetails[100];
+
+	for (int i = 0; i < size; i++) {
+
+		if (detalii_comanda[i].getOrderDetails_order_Id() == OrderDetails_order_Id) {
+
+			ordersDetails[number] = detalii_comanda[i];
+
+			number++;
+		}
 	}
-	else
-	{
-		cout << "Wrong quantity." << endl;
-	}
+
+	return ordersDetails;
 }
 
 void ControlOrderDetails::load()
@@ -114,14 +156,14 @@ void ControlOrderDetails::load()
 		read >> orderId;
 		int bikeId;
 		read >> bikeId;
-		int price;
+		/*int price;
 		read >> price;
 		int quantity;
-		read >> quantity;
+		read >> quantity;*/
 
 		if (id > 0) {
 
-			OrderDetails g(id, orderId, bikeId, price, quantity);
+			OrderDetails g(id, orderId, bikeId/*, price, quantity*/);
 			this->add(g);
 		}
 

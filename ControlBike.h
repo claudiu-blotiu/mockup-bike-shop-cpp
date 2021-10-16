@@ -30,6 +30,10 @@ public:
 
 	void updatebike_company(string bike_nr, string newbike_company);
 
+	Bike get_product(string name);
+
+	Bike get_product_cos(int bike_id);
+
 	void load();
 
 	string toSave();

@@ -120,6 +120,24 @@ void ControlBike::updatebike_company(string bike_nr, string newbike_company)
 	}
 }
 
+Bike ControlBike::get_product(string name)
+{
+	int pozitie = poz(name);
+
+	return bicicleta[pozitie];
+}
+
+Bike ControlBike::get_product_cos(int bike_id)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (bicicleta[i].getbike_id() == bike_id)
+		{
+			return bicicleta[i];
+		}
+	}
+}
+
 void ControlBike::load()
 {
 	ifstream read("Bike.txt");
