@@ -155,8 +155,11 @@ void ControlBike::load()
 		string bike_company;
 		read >> bike_company;
 		
-		Bike a(bike_id, bike_customer_id, bike_nr, bike_type, bike_company);
-		this->add(a);
+		if (bike_nr != "Undefined")
+		{
+			Bike a(bike_id, bike_customer_id, bike_nr, bike_type, bike_company);
+			this->add(a);
+		}
 	}
 }
 

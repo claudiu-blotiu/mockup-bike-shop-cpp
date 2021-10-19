@@ -4,7 +4,6 @@ class Order
 private:
 	int Order_id = 1;
 	int Order_customerId = 1;
-	int Order_ammount = 1;
 	string Order_Adress = "";
 	string Order_Email = "";
 	string Order_Date = "";
@@ -16,16 +15,13 @@ public:
 
 	}
 
-	Order(int, int, int, string, string, string, bool);
+	Order(int, int, string, string, string, bool);
 
 	void setOrder_id(int);
 	int getOrder_id();
 
 	void setOrder_customerId(int);
 	int getOrder_customerId();
-
-	void setOrder_ammount(int);
-	int getOrder_ammount();
 
 	void setOrder_Adress(string);
 	string getOrder_Adress();

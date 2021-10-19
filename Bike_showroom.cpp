@@ -3,13 +3,14 @@
 int main()
 {
   
-    ViewUser c;
+    Customer f(2, "bogdan", "0744", "email", "parole", "work", "bogdanB");
 
-   
-    c.play();
+    ViewUser view(f);
+
+    view.play();
+  
     
     
-
     
 
 

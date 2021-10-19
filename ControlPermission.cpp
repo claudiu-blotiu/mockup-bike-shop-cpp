@@ -124,8 +124,11 @@ void ControlPermission::load()
 		string permission_module;
 		read >> permission_module;
 		
-		Permission c(permission_id, permission_role_id, permission_title, permission_module);
-		this->add(c);
+		if (permission_title != "undefined")
+		{
+			Permission c(permission_id, permission_role_id, permission_title, permission_module);
+			this->add(c);
+		}
 	}
 }
 

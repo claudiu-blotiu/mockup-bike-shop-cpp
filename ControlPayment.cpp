@@ -138,8 +138,11 @@ void ControlPayment::load()
 		string payment_type;
 		read >> payment_type;
 		
-		Payment a(payment_id, payment_customer_id, payment_date, payment_bill, payment_type);
-		this->add(a);
+		if (payment_id > 0)
+		{
+			Payment a(payment_id, payment_customer_id, payment_date, payment_bill, payment_type);
+			this->add(a);
+		}
 	}
 }
 

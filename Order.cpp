@@ -1,10 +1,9 @@
 #include "Order.h"
 
-Order::Order(int Order_id, int Order_customerId, int Order_ammount, string Order_Adress, string Order_Email, string Order_Date, bool Order_Status)
+Order::Order(int Order_id, int Order_customerId, string Order_Adress, string Order_Email, string Order_Date, bool Order_Status)
 {
 	this->Order_id = Order_id;
 	this->Order_customerId = Order_customerId;
-	this->Order_ammount = Order_ammount;
 	this->Order_Adress = Order_Adress;
 	this->Order_Email = Order_Email;
 	this->Order_Date = Order_Date;
@@ -28,15 +27,6 @@ void Order::setOrder_customerId(int Order_customerId)
 int Order::getOrder_customerId()
 {
 	return this->Order_customerId;
-}
-
-void Order::setOrder_ammount(int Order_ammount)
-{
-	this->Order_ammount = Order_ammount;
-}
-int Order::getOrder_ammount()
-{
-	return this->Order_ammount;
 }
 
 void Order::setOrder_Adress(string Order_Adress)
@@ -81,7 +71,6 @@ string Order::description()
 
 	text += "Order_id: " + to_string(this->Order_id) + "\n";
 	text += "Order_customerId: " + to_string(this->Order_customerId) + "\n";
-	text += "Order_ammount: " + to_string(this->Order_ammount) + "\n";
 	text += "Order_Adress: " + this->Order_Adress + "\n";
 	text += "Order_Email: " + this->Order_Email + "\n";
 	text += "Order_Date: " + this->Order_Date + "\n";
@@ -96,7 +85,6 @@ string Order::toSave()
 
 	text += to_string(this->Order_id) + " ";
 	text += to_string(this->Order_customerId) + " ";
-	text += to_string(this->Order_ammount) + " ";
 	text += this->Order_Adress + " ";
 	text += this->Order_Email + " ";
 	text += this->Order_Date + " ";

@@ -18,11 +18,11 @@ public:
 
 	void Delete(int Order_id);
 
+	int nextId();
+
 	void update_Order_id(int Order_id, int New_Order_id);
 
 	void update_Order_customerId(int Order_id, int New_Order_customerId);
-
-	void update_Order_ammount(int Order_id, int New_Order_ammount);
 
 	void update_Order_Adress(int Order_id, string New_Order_Adress);
 

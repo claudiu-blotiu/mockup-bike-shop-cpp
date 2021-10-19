@@ -91,8 +91,12 @@ void ControlRole::load()
 		string role_title;
 		read >> role_title;
 
-		Role r(role_id, role_title);
-		this->add(r);
+		if (role_title != "undefined")
+		{
+			Role r(role_id, role_title);
+			this->add(r);
+		}
+		
 	}
 }
 

@@ -4,9 +4,9 @@ ViewUser::ViewUser(Customer c)
 {
 	this->client = c;
 
-	Booking o(rezervare.nextId(), rezerva.getbooking_tite(), rezerva.getbooking_type(), rezerva.getbooking_date());
+	Order o(comanda.nextId(), c.getcustomer_id(), c.getcustomer_adress(), c.getcustomer_email(),order.getOrder_Date(),false);
 
-	rezerva = o;
+	order = o;
 }
 
 string ViewUser::meniu()
@@ -75,9 +75,11 @@ void ViewUser::add()
 
 		if (choise.getbike_type() == bike_type)
 		{
-			OrderDetails detalii(details.nextId(), rezerva.getbooking_id(), choise.getbike_id());
+			OrderDetails detalii(details.nextId(), order.getOrder_id(), choise.getbike_id());
 			
 			details.add(detalii);
+
+			
 		}
 		else
 		{
@@ -92,7 +94,7 @@ void ViewUser::viewBooking()
 {
 	int ct = 0;
 
-	OrderDetails* produse_cos = details.getProducts(rezerva.getbooking_id(), ct);
+	OrderDetails* produse_cos = details.getProducts(order.getOrder_id(), ct);
 
 	for (int i = 0; i < ct; i++)
 	{
@@ -125,7 +127,7 @@ void ViewUser::remove()
 
 	Bike produse = produs.get_product(bike_nr);
 
-	OrderDetails* produseDetaliate = details.getProducts(rezerva.getbooking_id(), ct);
+	OrderDetails* produseDetaliate = details.getProducts(order.getOrder_id(), ct);
 
 	for (int i = 0; i < ct; i++)
 	{
@@ -138,13 +140,13 @@ void ViewUser::remove()
 
 void ViewUser::buy()
 {
-	rezervare.add(rezerva);
+	comanda.add(order);
 
-	rezervare.save();
+	comanda.save();
 
 	details.save();
 
-	produs.save();
+	
 }
 
 

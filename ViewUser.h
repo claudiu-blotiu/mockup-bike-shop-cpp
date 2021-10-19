@@ -6,16 +6,12 @@ private:
 	Customer client;
 	ControlBike produs;
 	ControlOrderDetails details;
-	ControlBooking rezervare;
-	Booking rezerva;
+	ControlOrder comanda;
+	Order order;
 
 public:
 
-	ViewUser()
-	{
-
-	}
-
+	
 	ViewUser(Customer c);
 
 	string meniu();

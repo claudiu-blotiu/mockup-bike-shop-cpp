@@ -172,8 +172,11 @@ void ControlCustomer::load()
 		string customer_username;
 		read >> customer_username;
 
-		Customer c(customer_id, customer_name, customer_mobile, customer_email, customer_password, customer_adress, customer_username);
-		this->add(c);
+		if (customer_name != "undefined")
+		{
+			Customer c(customer_id, customer_name, customer_mobile, customer_email, customer_password, customer_adress, customer_username);
+			this->add(c);
+		}
 	}
 }
 

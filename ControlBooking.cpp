@@ -122,8 +122,11 @@ void ControlBooking::load()
 		string booking_date;
 		read >> booking_date;
 
-		Booking a(booking_id, booking_tite, booking_type, booking_date);
-		this->add(a);
+		if (booking_tite != "Undefined")
+		{
+			Booking a(booking_id, booking_tite, booking_type, booking_date);
+			this->add(a);
+		}
 	}
 }
 

@@ -153,8 +153,13 @@ void ControlUser::load()
 		string user_adress;
 		read >> user_adress;
 
-		User a(user_id, user_role_id, user_name, user_email, user_Dob, user_adress);
-		this->add(a);
+		if(user_name!="Undefined")
+		{ 
+			User a(user_id, user_role_id, user_name, user_email, user_Dob, user_adress);
+			this->add(a);
+
+		}
+		
 	}
 	
 }

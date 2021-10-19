@@ -42,6 +42,15 @@ void ControlOrder::Delete(int Order_id)
 	size--;
 }
 
+int ControlOrder::nextId()
+{
+	if (size == 0) {
+		return 1;
+	}
+
+	return comanda[size - 1].getOrder_id() + 1;
+}
+
 void ControlOrder::update_Order_id(int Order_id, int New_Order_id)
 {
 	int p = poz(Order_id);
@@ -67,20 +76,6 @@ void ControlOrder::update_Order_customerId(int Order_id, int New_Order_customerI
 	else
 	{
 		cout << "Wrong Order customer ID" << endl;
-	}
-}
-
-void ControlOrder::update_Order_ammount(int Order_id, int New_Order_ammount)
-{
-	int p = poz(Order_id);
-
-	if (p != -1)
-	{
-		comanda[p].setOrder_ammount(New_Order_ammount);
-	}
-	else
-	{
-		cout << "Wrong Order ammount" << endl;
 	}
 }
 
@@ -150,8 +145,6 @@ void ControlOrder::load()
 		read >> Order_id;
 		int Order_customerId;
 		read >> Order_customerId;
-		int Order_ammount;
-		read >> Order_ammount;
 		string Order_Adress;
 		read >> Order_Adress;
 		string Order_Email;
@@ -163,7 +156,7 @@ void ControlOrder::load()
 
 		if (Order_customerId > 0)
 		{
-			Order o(Order_id, Order_customerId, Order_ammount, Order_Adress, Order_Email, Order_Date, Order_status);
+			Order o(Order_id, Order_customerId,Order_Adress, Order_Email, Order_Date, Order_status);
 			this->add(o);
 		}
 

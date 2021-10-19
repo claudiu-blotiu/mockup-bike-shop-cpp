@@ -169,8 +169,11 @@ void ControlInsurance::load()
 		string insurance_expire;
 		read >> insurance_expire;
 
-		Insurance a(insurance_id, insurance_bike_id, insurance_ammount, insurance_type, insurance_date, insurance_number, insurance_expire);
-		this->add(a);
+		if (insurance_id > 0)
+		{
+			Insurance a(insurance_id, insurance_bike_id, insurance_ammount, insurance_type, insurance_date, insurance_number, insurance_expire);
+			this->add(a);
+		}
 	}
 }
 
