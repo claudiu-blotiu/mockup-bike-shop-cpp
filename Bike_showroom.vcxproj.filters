@@ -81,6 +81,18 @@
     <ClCompile Include="ControlOrderDetails.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Insurance_details.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Control_Insurance_details.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Insurance_List.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ControlInsurance_list.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
@@ -146,6 +158,18 @@
     <ClInclude Include="ControlOrderDetails.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Insurance_details.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Control_Insurance_details.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Insurance_List.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ControlInsurance_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="User.txt">
@@ -176,6 +200,12 @@
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="OrderDetails.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Insurance_details.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Insurance_List.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

@@ -1,15 +1,2 @@
 ﻿  Bike_showroom.cpp
-  ControlBooking.cpp
-  ControlCustomer.cpp
-  ControlOrder.cpp
-  ControlOrderDetails.cpp
-  ControlPermission.cpp
-  ControlRole.cpp
-  Customer.cpp
-  Order.cpp
-  OrderDetails.cpp
-  Permission.cpp
-  Role.cpp
-  ViewUser.cpp
-  Generating Code...
   Bike_showroom.vcxproj -> G:\c++\Bike_showroom\Debug\Bike_showroom.exe

@@ -1,6 +1,6 @@
 #include "Insurance.h"
 
-Insurance::Insurance(int insurance_id, int insurance_bike_id, string insurance_ammount, string insurance_type, string insurance_date, string insurance_number, string insurance_expire)
+Insurance::Insurance(int insurance_id, int insurance_bike_id, string insurance_ammount, string insurance_type, string insurance_date, string insurance_number, string insurance_expire,int insurance_price)
 {
 	this->insurance_id = insurance_id;
 	this->insurance_bike_id = insurance_bike_id;
@@ -9,7 +9,7 @@ Insurance::Insurance(int insurance_id, int insurance_bike_id, string insurance_a
 	this->insurance_date = insurance_date;
 	this->insurance_number = insurance_number;
 	this->insurance_expire = insurance_expire;
-
+	this->insurance_price = insurance_price;
 }
 
 void Insurance::setinsurance_id(int insurance_id)
@@ -75,6 +75,15 @@ string Insurance::getinsurance_expire()
 	return this->insurance_expire;
 }
 
+void Insurance::setinsurance_price(int insurance_price)
+{
+	this->insurance_price = insurance_price;
+}
+int Insurance::getinsurance_price()
+{
+	return this->insurance_price;
+}
+
 string Insurance::description()
 {
 	string text = "";
@@ -86,6 +95,7 @@ string Insurance::description()
 	text += "insurance_date: " + this->insurance_date + "\n";
 	text += "insurance_number: " + this->insurance_number + "\n";
 	text += "insurance_expire: " + this->insurance_expire + "\n";
+	text += "insurance_price: " + to_string(this->insurance_price) + "\n";
 
 	return text;
 }
@@ -100,7 +110,8 @@ string Insurance::toSave()
 	text += this->insurance_type + " ";
 	text += this->insurance_date + " ";
 	text += this->insurance_number + " ";
-	text += this->insurance_expire;
+	text += this->insurance_expire + " ";
+	text += this->insurance_price;
 
 	return text;
 }

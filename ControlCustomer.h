@@ -33,6 +33,8 @@ public:
 
 	void updatecustomer_username(string customer_name, string newcustomer_username);
 
+	Customer get_customer(string name);
+
 	void load();
 
 	string toSave();

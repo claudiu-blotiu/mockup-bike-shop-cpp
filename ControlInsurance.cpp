@@ -19,11 +19,23 @@ void ControlInsurance::show()
 	}
 }
 
-int ControlInsurance::poz(string insurance_number)
+int ControlInsurance::poz(string insurance_type)
 {
 	for (int i = 0; i < size; i++)
 	{
-		if (asigurare[i].getinsurance_number() == insurance_number)
+		if (asigurare[i].getinsurance_type() == insurance_type)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int ControlInsurance::poz_asig(int insurance_id)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (asigurare[i].getinsurance_id() == insurance_id)
 		{
 			return i;
 		}
@@ -148,6 +160,20 @@ void ControlInsurance::updateinsurance_expire(string insurance_number, string ne
 	}
 }
 
+Insurance ControlInsurance::get_insurance1(int insurance_id)
+{
+	int pozitie = poz_asig(insurance_id);
+
+	return asigurare[pozitie];
+}
+
+Insurance ControlInsurance::get_insurance2(string insurance_type)
+{
+	int pozitie = poz(insurance_type);
+
+	return asigurare[pozitie];
+}
+
 void ControlInsurance::load()
 {
 	ifstream read("Insurance.txt");
@@ -168,10 +194,12 @@ void ControlInsurance::load()
 		read >> insurance_number;
 		string insurance_expire;
 		read >> insurance_expire;
+		int insurance_price;
+		read >> insurance_price;
 
 		if (insurance_id > 0)
 		{
-			Insurance a(insurance_id, insurance_bike_id, insurance_ammount, insurance_type, insurance_date, insurance_number, insurance_expire);
+			Insurance a(insurance_id, insurance_bike_id, insurance_ammount, insurance_type, insurance_date, insurance_number, insurance_expire, insurance_price);
 			this->add(a);
 		}
 	}

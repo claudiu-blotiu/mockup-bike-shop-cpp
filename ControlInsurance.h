@@ -14,7 +14,9 @@ public:
 
 	void show();
 
-	int poz(string insurance_number);
+	int poz(string insurance_type);
+
+	int poz_asig(int insurance_id);
 
 	void Delete(string insurance_number);
 
@@ -33,6 +35,10 @@ public:
 	void updateinsurance_number(string insurance_number, string newinsurance_number);
 
 	void updateinsurance_expire(string insurance_number, string newinsurance_expire);
+
+	Insurance get_insurance1(int insurance_id);
+
+	Insurance get_insurance2(string insurance_type);
 
 	void load();
 

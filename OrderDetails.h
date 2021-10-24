@@ -6,8 +6,7 @@ private:
 	int OrderDetails_id = 1;
 	int OrderDetails_order_Id = 1;
 	int OrderDetails_Bike_Id = 1;
-	/*string OrderDetails_price = 1;
-	int OrderDetails_quantity = 1;*/
+	
 
 public:
 
@@ -26,12 +25,6 @@ public:
 
 	void setOrderDetails_Bike_Id(int);
 	int getOrderDetails_Bike_Id();
-
-	/*void setOrderDetails_price(int);
-	int getOrderDetails_price();
-
-	void setOrderDetails_quantity(int);
-	int getOrderDetails_quantity();*/
 
 	string description();
 

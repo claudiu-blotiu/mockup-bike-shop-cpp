@@ -180,6 +180,13 @@ void ControlCustomer::load()
 	}
 }
 
+Customer ControlCustomer::get_customer(string name)
+{
+	int pozitie = poz(name);
+
+	return client[pozitie];
+}
+
 string ControlCustomer::toSave()
 {
 	string text = "";

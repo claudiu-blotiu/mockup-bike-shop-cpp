@@ -10,6 +10,7 @@ private:
 	string insurance_date = "";
 	string insurance_number = "";
 	string insurance_expire = "";
+	int insurance_price = 1;
 
 public:
 
@@ -17,7 +18,7 @@ public:
 	{
 
 	}
-	Insurance(int, int, string, string, string, string, string);
+	Insurance(int, int, string, string, string, string, string,int);
 
 	void setinsurance_id(int);
 	int getinsurance_id();
@@ -39,6 +40,9 @@ public:
 
 	void setinsurance_expire(string);
 	string getinsurance_expire();
+
+	void setinsurance_price(int);
+	int getinsurance_price();
 
 	string description();
 
