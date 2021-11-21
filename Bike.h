@@ -5,7 +5,7 @@ private:
 	
 	int bike_id = 1;
 	int bike_customer_id = 1;
-	string bike_nr = "";
+	int bike_nr = 1;
 	string bike_type = "";
 	string bike_company = "";
 	
@@ -15,7 +15,7 @@ public:
 	{
 
 	}
-	Bike(int, int, string, string, string);
+	Bike(int, int, int, string, string);
 
 	void setbike_id(int);
 	int getbike_id();
@@ -23,8 +23,8 @@ public:
 	void setbike_customer_id(int);
 	int getbike_customer_id();
 
-	void setbike_nr(string);
-	string getbike_nr();
+	void setbike_nr(int);
+	int getbike_nr();
 
 	void setbike_type(string);
 	string getbike_type();

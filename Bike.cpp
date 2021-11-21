@@ -1,6 +1,6 @@
 #include "Bike.h"
 
-Bike::Bike(int bike_id, int bike_customer_id, string bike_nr, string bike_type, string bike_company)
+Bike::Bike(int bike_id, int bike_customer_id, int bike_nr, string bike_type, string bike_company)
 {
 	this->bike_id = bike_id;
 	this->bike_customer_id = bike_customer_id;
@@ -28,11 +28,11 @@ int Bike::getbike_customer_id()
 	return this->bike_customer_id;
 }
 
-void Bike::setbike_nr(string bike_nr)
+void Bike::setbike_nr(int bike_nr)
 {
 	this->bike_nr = bike_nr;
 }
-string Bike::getbike_nr()
+int Bike::getbike_nr()
 {
 	return this->bike_nr;
 }
@@ -61,7 +61,7 @@ string Bike::description()
 
 	text += "Bike id: " + to_string(this->bike_id) + "\n";
 	text += "Bike customer id: " + to_string(this->bike_customer_id) + "\n";
-	text += "Bike nr: " + this->bike_nr + "\n";
+	text += "Bike nr: " + to_string(this->bike_nr) + "\n";
 	text += "Bike type: " + this->bike_type + "\n";
 	text += "Bike company: " + this->bike_company + "\n";
 
@@ -74,7 +74,7 @@ string Bike::toSave()
 
 	text += to_string(this->bike_id) + " ";
 	text += to_string(this->bike_customer_id) + " ";
-	text += this->bike_nr + " ";
+	text += to_string(this->bike_nr) + " ";
 	text += this->bike_type + " ";
 	text += this->bike_company;
 

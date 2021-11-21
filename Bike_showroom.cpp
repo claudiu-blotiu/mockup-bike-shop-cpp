@@ -7,29 +7,20 @@ int main()
 
     ViewUser view(f);
 
-    //view.save_insure();
+    view.play();
 
-    view.rent();
-  
+
+
    
+
     
-    /*ControlBike f;
 
-    Bike g=f.get_product_cos(3);
-
-    cout<<g.description();*/
-
-    /*ControlOrderDetails f;
-
-    int ct = 0;
-
-    OrderDetails*g= f.getProducts(1, ct);
-
-
-        cout << g->description();*/
-   
     
     
+    
+
+
+
 
 }
 

@@ -4,9 +4,12 @@ class ControlOrderDetails
 {
 private:
 	OrderDetails detalii_comanda[100];
-	int size = 0;
+	
 
 public:
+
+	int size = 0;
+
 	ControlOrderDetails();
 
 	void add(OrderDetails a);
@@ -26,10 +29,6 @@ public:
 	void updateOrderID(int OrderDetails_order_Id, int newOrderId);
 
 	void updateBikeId(int OrderDetails_order_Id, int newBikeId);
-
-	/*void updatePrice(int OrderDetails_order_Id, int newPrice);
-
-	void updateQuantity(int OrderDetails_order_Id, int newQuantity);*/
 
 	OrderDetails* getProducts(int OrderDetails_order_Id, int& number);
 

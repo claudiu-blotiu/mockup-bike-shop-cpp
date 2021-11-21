@@ -5,7 +5,7 @@ private:
 
 	int insurance_id = 1;
 	int insurance_bike_id = 1;
-	string insurance_ammount = "";
+	int insurance_ammount = 1;
 	string insurance_type = "";
 	string insurance_date = "";
 	string insurance_number = "";
@@ -18,7 +18,8 @@ public:
 	{
 
 	}
-	Insurance(int, int, string, string, string, string, string,int);
+
+	Insurance(int, int, int, string, string, string, string,int);
 
 	void setinsurance_id(int);
 	int getinsurance_id();
@@ -26,8 +27,8 @@ public:
 	void setinsurance_bike_id(int);
 	int getinsurance_bike_id();
 
-	void setinsurance_ammount(string);
-	string getinsurance_ammount();
+	void setinsurance_ammount(int);
+	int getinsurance_ammount();
 
 	void setinsurance_type(string);
 	string getinsurance_type();

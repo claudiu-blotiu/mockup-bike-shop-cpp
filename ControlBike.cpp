@@ -19,7 +19,7 @@ void ControlBike::show()
 	}
 }
 
-int ControlBike::poz(string bike_nr)
+int ControlBike::poz(int bike_nr)
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -31,7 +31,19 @@ int ControlBike::poz(string bike_nr)
 	return -1;
 }
 
-void ControlBike::Delete(string bike_nr)
+int ControlBike::poz1(string bike_type)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (bicicleta[i].getbike_type() == bike_type)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+void ControlBike::Delete(int bike_nr)
 {
 	int p = poz(bike_nr);
 	for (int i = p; i < size - 1; i++)
@@ -50,7 +62,7 @@ int ControlBike::nextId()
 	return bicicleta[size - 1].getbike_id() + 1;
 }
 
-void ControlBike::updatebike_id(string bike_nr, int newbike_id)
+void ControlBike::updatebike_id(int bike_nr, int newbike_id)
 {
 	int p = poz(bike_nr);
 
@@ -64,7 +76,7 @@ void ControlBike::updatebike_id(string bike_nr, int newbike_id)
 	}
 }
 
-void ControlBike::updatebike_customer_id(string bike_nr, int newbike_customer_id)
+void ControlBike::updatebike_customer_id(int bike_nr, int newbike_customer_id)
 {
 	int p = poz(bike_nr);
 
@@ -78,7 +90,7 @@ void ControlBike::updatebike_customer_id(string bike_nr, int newbike_customer_id
 	}
 }
 
-void ControlBike::updatebike_nr(string bike_nr, string newbike_nr)
+void ControlBike::updatebike_nr(int bike_nr, int newbike_nr)
 {
 	int p = poz(bike_nr);
 
@@ -92,7 +104,7 @@ void ControlBike::updatebike_nr(string bike_nr, string newbike_nr)
 	}
 }
 
-void ControlBike::updatebike_type(string bike_nr, string newbike_type)
+void ControlBike::updatebike_type(int bike_nr, string newbike_type)
 {
 	int p = poz(bike_nr);
 
@@ -106,7 +118,7 @@ void ControlBike::updatebike_type(string bike_nr, string newbike_type)
 	}
 }
 
-void ControlBike::updatebike_company(string bike_nr, string newbike_company)
+void ControlBike::updatebike_company(int bike_nr, string newbike_company)
 {
 	int p = poz(bike_nr);
 
@@ -120,9 +132,9 @@ void ControlBike::updatebike_company(string bike_nr, string newbike_company)
 	}
 }
 
-Bike ControlBike::get_product(string name)
+Bike ControlBike::get_product(int bike_nr)
 {
-	int pozitie = poz(name);
+	int pozitie = poz(bike_nr);
 
 	return bicicleta[pozitie];
 }
@@ -148,14 +160,14 @@ void ControlBike::load()
 		read >> bike_id;
 		int bike_customer_id;
 		read >> bike_customer_id;
-		string bike_nr;
+		int bike_nr;
 		read >> bike_nr;
 		string bike_type;
 		read >> bike_type;
 		string bike_company;
 		read >> bike_company;
 		
-		if (bike_nr != "Undefined")
+		if (bike_nr != 0)
 		{
 			Bike a(bike_id, bike_customer_id, bike_nr, bike_type, bike_company);
 			this->add(a);

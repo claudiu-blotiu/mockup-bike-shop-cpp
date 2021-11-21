@@ -141,7 +141,6 @@ string ControlInsurance_list::toSave()
 	{
 		text += lista_asig[i].toSave() + "\n";
 	}
-
 	text += lista_asig[i].toSave();
 	return text;
 }

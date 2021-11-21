@@ -6,11 +6,11 @@ private:
 	Customer client;
 	ControlBike produs;
 	Control_Insurance_details detalii_asig;
+	Insurance_details det_asig;
 	ControlInsurance asigurat;
 	Insurance asigurare;
 	ControlInsurance_list lista_asig;
 	Insurance_List lista_asigurari;
-	ControlPayment plata;
 	ControlOrderDetails details;
 	ControlOrder comanda;
 	Order order;

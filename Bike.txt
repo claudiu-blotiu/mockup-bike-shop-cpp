@@ -1,3 +1,3 @@
-1 1 10 MTB pegas
-2 2 11 BMX Alice
-3 3 12 Course Shimano
+1 1 1 MTB pegas
+2 2 2 BMX Alice
+3 3 3 Course Shimano

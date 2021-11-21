@@ -93,7 +93,7 @@ void Control_Insurance_details::update_Insurance_details_Bike_Id(int Insurance_d
 	}
 }
 
-void Control_Insurance_details::update_Insurance_details_insurance_ammount(int Insurance_details_insurance_Id, string New_Insurance_details_insurance_ammount)
+void Control_Insurance_details::update_Insurance_details_insurance_ammount(int Insurance_details_insurance_Id, int New_Insurance_details_insurance_ammount)
 {
 	int p = poz(Insurance_details_insurance_Id);
 
@@ -151,7 +151,7 @@ void Control_Insurance_details::load()
 		read >> Insurance_details_insurance_Id;
 		int Insurance_details_Bike_Id;
 		read >> Insurance_details_Bike_Id;
-		string Insurance_details_insurance_ammount;
+		int Insurance_details_insurance_ammount;
 		read >> Insurance_details_insurance_ammount;
 		int Insurance_details_insurance_price;
 		read >> Insurance_details_insurance_price;

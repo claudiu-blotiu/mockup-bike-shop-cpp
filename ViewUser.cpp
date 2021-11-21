@@ -66,7 +66,7 @@ void ViewUser::play()
 
 void ViewUser::add()
 {
-	string bike_nr = "";
+	int bike_nr;
 
 	cout << "Introduceti nr bicicletei" << endl;
 
@@ -86,36 +86,33 @@ void ViewUser::add()
 			OrderDetails detalii(details.nextId(), order.getOrder_id(), choise.getbike_id());
 			
 			details.add(detalii);
-
-			
 		}
 		else
 		{
 			cout << "Tipul de bicicleta nu este corect" << endl;
 		}
 	}
-
-
 }
 
 void ViewUser::viewBooking()
 {
 	int ct = 0;
 
-	OrderDetails* produse_cos = details.getProducts(order.getOrder_id(), ct);
-	
-	for (int i = 0; i < ct; i++)
+	for (int i = 1; i <= details.size; i++)
 	{
-		
-		Bike p = produs.get_product_cos(produse_cos[i].getOrderDetails_Bike_Id());
+		OrderDetails* produse_cos = details.getProducts(i, ct);
 
-		string descriere = "";
+		for (int i = 0; i < ct; i++)
+		{
+			Bike p = produs.get_product_cos(produse_cos[i].getOrderDetails_Bike_Id());
 
-		
-		descriere += "Bike: " + p.getbike_nr() + "\n";
-		descriere += "Tipul bicicletei: " + p.getbike_type() + "\n";
+			string descriere = "";
 
-		cout << descriere << endl;
+			descriere += "Bike: " + to_string(p.getbike_nr()) + "\n";
+			descriere += "Tipul bicicletei: " + p.getbike_type() + "\n";
+
+			cout << descriere << endl;
+		}
 	}
 
 }
@@ -132,40 +129,60 @@ void ViewUser::asigurare_produs()
 
 	if (choise.getinsurance_type() == insurance_type)
 	{
-		Insurance_List lista_asigurare(lista_asig.nextId(), choise.getinsurance_id(), choise.getinsurance_bike_id(), choise.getinsurance_type());
+		cout << "Introduceti cantitatea dorita" << endl;
 
-		lista_asig.add(lista_asigurare);
+		int cant;
+		cin >> cant;
 
+		if(choise.getinsurance_ammount() > cant)
+		{
+			Insurance_details detalii_asigurari(detalii_asig.nextId(), choise.getinsurance_id(), det_asig.getInsurance_details_Bike_Id(), cant, choise.getinsurance_price() * cant);
+
+			detalii_asig.add(detalii_asigurari);
+			
+			Insurance_List lista(lista_asig.nextId(), choise.getinsurance_id(), det_asig.getInsurance_details_Bike_Id(), choise.getinsurance_type());
+
+			lista_asigurari = lista;
+			//lista_asig.add(lista_asigurari);
+		}
+		else
+		{
+			cout << "Wrong Quantity" << endl;
+		}
 	}
 	else
 	{
 		cout << "Wrong insurance Type" << endl;
 	}
+	
 }
 
 void ViewUser::viewAsigurare()
 {
 	int ct = 0;
 
-	Insurance_details* asigurare_cos = detalii_asig.get_insurance(asigurare.getinsurance_id(), ct);
-
-	for (int i = 0; i < ct; i++)
+	for (int i = 1; i <= detalii_asig.size; i++)
 	{
-		cout << "TEST" << endl;
-		Insurance p = asigurat.get_insurance1(asigurare_cos[i].getInsurance_details_insurance_Id());
+		Insurance_details* asigurare_cos = detalii_asig.get_insurance(i, ct);
 
-		string descriere = "";
+		for (int i = 0; i < ct; i++)
+		{
+			cout << "TEST" << endl;
+			Insurance p = asigurat.get_insurance1(asigurare_cos[i].getInsurance_details_insurance_Id());
 
-		descriere += "Bike: " + to_string(p.getinsurance_bike_id()) + "\n";
-		descriere += "Nr asigurare: " + p.getinsurance_number() + "\n";
+			string descriere = "";
 
-		cout << descriere << endl;
+			descriere += "Bike: " + to_string(p.getinsurance_bike_id()) + "\n";
+			descriere += "Nr asigurare: " + p.getinsurance_number() + "\n";
+
+			cout << descriere << endl;
+		}
 	}
 }
 
 void ViewUser::remove()
 {
-	string bike_nr = "";
+	int bike_nr;
 
 	cout << "Introduceti nr bicicletei" << endl;
 
@@ -175,13 +192,16 @@ void ViewUser::remove()
 
 	Bike produse = produs.get_product(bike_nr);
 
-	OrderDetails* produseDetaliate = details.getProducts(order.getOrder_id(), ct);
-
-	for (int i = 0; i < ct; i++)
+	for (int i = 1; i <= details.size; i++)
 	{
-		if (produseDetaliate[i].getOrderDetails_Bike_Id() == produse.getbike_id())
+		OrderDetails* produseDetaliate = details.getProducts(i, ct);
+
+		for (int i = 0; i < ct; i++)
 		{
-			details.Delete_2(produseDetaliate[i].getOrderDetails_Bike_Id());	
+			if (produseDetaliate[i].getOrderDetails_Bike_Id() == produse.getbike_id())
+			{
+				details.Delete_2(produseDetaliate[i].getOrderDetails_Bike_Id());
+			}
 		}
 	}
 }
@@ -190,11 +210,9 @@ void ViewUser::rent()
 {
 	comanda.add(order);
 
-	comanda.show();
+	comanda.save();
 
-	/*comanda.save();
-
-	details.save();*/
+	details.save();
 
 }
 
@@ -202,9 +220,9 @@ void ViewUser::save_insure()
 {
 	lista_asig.add(lista_asigurari);
 
-	lista_asig.show();
+	lista_asig.save();
 
-	/*detalii_asig.save();*/
+	detalii_asig.save();
 }
 
 

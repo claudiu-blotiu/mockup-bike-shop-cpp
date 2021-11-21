@@ -1,7 +1,7 @@
 #include"ControlOrder.h"
 class OrderDetails
 {
-private:
+public:
 
 	int OrderDetails_id = 1;
 	int OrderDetails_order_Id = 1;

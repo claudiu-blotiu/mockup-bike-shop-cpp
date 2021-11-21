@@ -26,7 +26,7 @@ public:
 
 	void updateinsurance_bike_id(string insurance_number, int newinsurance_bike_id);
 
-	void updateinsurance_ammount(string insurance_number, string newinsurance_ammount);
+	void updateinsurance_ammount(string insurance_number, int newinsurance_ammount);
 
 	void updateinsurance_type(string insurance_number, string newinsurance_type);
 

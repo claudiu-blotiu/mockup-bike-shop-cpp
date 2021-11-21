@@ -90,7 +90,7 @@ void ControlInsurance::updateinsurance_bike_id(string insurance_number, int newi
 	}
 }
 
-void ControlInsurance::updateinsurance_ammount(string insurance_number, string newinsurance_ammount)
+void ControlInsurance::updateinsurance_ammount(string insurance_number, int newinsurance_ammount)
 {
 	int p = poz(insurance_number);
 
@@ -184,7 +184,7 @@ void ControlInsurance::load()
 		read >> insurance_id;
 		int insurance_bike_id;
 		read >> insurance_bike_id;
-		string insurance_ammount;
+		int insurance_ammount;
 		read >> insurance_ammount;
 		string insurance_type;
 		read >> insurance_type;

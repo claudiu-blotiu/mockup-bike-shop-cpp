@@ -5,9 +5,10 @@ class Control_Insurance_details
 private:
 
 	Insurance_details detalii_asig[100];
-	int size = 0;
 
 public:
+
+	int size = 0;
 
 	Control_Insurance_details();
 
@@ -27,7 +28,7 @@ public:
 
 	void update_Insurance_details_Bike_Id(int Insurance_details_insurance_Id, int New_Insurance_details_Bike_Id);
 
-	void update_Insurance_details_insurance_ammount(int Insurance_details_insurance_Id, string New_Insurance_details_insurance_ammount);
+	void update_Insurance_details_insurance_ammount(int Insurance_details_insurance_Id, int New_Insurance_details_insurance_ammount);
 
 	void update_Insurance_details_insurance_price(int Insurance_details_insurance_Id, int New_Insurance_details_insurance_price);
 
