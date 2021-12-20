@@ -2,10 +2,12 @@
 
 Control_Insurance_details::Control_Insurance_details()
 {
+	detalii_asig = new Insurance_details * [100];
+
 	load();
 }
 
-void Control_Insurance_details::add(Insurance_details a)
+void Control_Insurance_details::add(Insurance_details* a)
 {
 	detalii_asig[size] = a;
 	size++;
@@ -15,7 +17,7 @@ void Control_Insurance_details::show()
 {
 	for (int i = 0; i < size; i++)
 	{
-		cout << detalii_asig[i].description() << endl;
+		cout << detalii_asig[i]->description() << endl;
 	}
 }
 
@@ -23,7 +25,7 @@ int Control_Insurance_details::poz(int Insurance_details_insurance_Id)
 {
 	for (int i = 0; i < size; i++)
 	{
-		if (detalii_asig[i].getInsurance_details_insurance_Id() == Insurance_details_insurance_Id)
+		if (detalii_asig[i]->getInsurance_details_insurance_Id() == Insurance_details_insurance_Id)
 		{
 			return i;
 		}
@@ -48,7 +50,7 @@ int Control_Insurance_details::nextId()
 		return 1;
 	}
 
-	return detalii_asig[size - 1].getInsurance_details_id() + 1;
+	return detalii_asig[size - 1]->getInsurance_details_id() + 1;
 }
 
 void Control_Insurance_details::update_Insurance_details_id(int Insurance_details_insurance_Id, int New_Insurance_details_id)
@@ -57,7 +59,7 @@ void Control_Insurance_details::update_Insurance_details_id(int Insurance_detail
 
 	if (p != -1)
 	{
-		detalii_asig[p].setInsurance_details_id(New_Insurance_details_id);
+		detalii_asig[p]->setInsurance_details_id(New_Insurance_details_id);
 	}
 	else
 	{
@@ -71,7 +73,7 @@ void Control_Insurance_details::update_Insurance_details_insurance_Id(int Insura
 
 	if (p != -1)
 	{
-		detalii_asig[p].setInsurance_details_insurance_Id(New_Insurance_details_insurance_Id);
+		detalii_asig[p]->setInsurance_details_insurance_Id(New_Insurance_details_insurance_Id);
 	}
 	else
 	{
@@ -85,7 +87,7 @@ void Control_Insurance_details::update_Insurance_details_Bike_Id(int Insurance_d
 
 	if (p != -1)
 	{
-		detalii_asig[p].setInsurance_details_Bike_Id(New_Insurance_details_Bike_Id);
+		detalii_asig[p]->setInsurance_details_Bike_Id(New_Insurance_details_Bike_Id);
 	}
 	else
 	{
@@ -99,7 +101,7 @@ void Control_Insurance_details::update_Insurance_details_insurance_ammount(int I
 
 	if (p != -1)
 	{
-		detalii_asig[p].setInsurance_details_insurance_ammount(New_Insurance_details_insurance_ammount);
+		detalii_asig[p]->setInsurance_details_insurance_ammount(New_Insurance_details_insurance_ammount);
 	}
 	else
 	{
@@ -113,7 +115,7 @@ void Control_Insurance_details::update_Insurance_details_insurance_price(int Ins
 
 	if (p != -1)
 	{
-		detalii_asig[p].setInsurance_details_insurance_price(New_Insurance_details_insurance_price);
+		detalii_asig[p]->setInsurance_details_insurance_price(New_Insurance_details_insurance_price);
 	}
 	else
 	{
@@ -121,14 +123,14 @@ void Control_Insurance_details::update_Insurance_details_insurance_price(int Ins
 	}
 }
 
-Insurance_details* Control_Insurance_details::get_insurance(int insurance_id, int& nr)
+Insurance_details** Control_Insurance_details::get_insurance(int insurance_id, int& nr)
 {
 	nr = 0;
-	Insurance_details* insurance_det = new Insurance_details[100];
+	Insurance_details** insurance_det = new Insurance_details*[100];
 
 	for (int i = 0; i < size; i++) {
 
-		if (detalii_asig[i].getInsurance_details_insurance_Id() == insurance_id) {
+		if (detalii_asig[i]->getInsurance_details_insurance_Id() == insurance_id) {
 
 			insurance_det[nr] = detalii_asig[i];
 
@@ -158,7 +160,7 @@ void Control_Insurance_details::load()
 		
 		if (Insurance_details_insurance_Id > 0)
 		{
-			Insurance_details o(Insurance_details_id, Insurance_details_insurance_Id, Insurance_details_Bike_Id, Insurance_details_insurance_ammount, Insurance_details_insurance_price);
+			Insurance_details* o=new Insurance_details(Insurance_details_id, Insurance_details_insurance_Id, Insurance_details_Bike_Id, Insurance_details_insurance_ammount, Insurance_details_insurance_price);
 			this->add(o);
 		}
 
@@ -171,10 +173,10 @@ string Control_Insurance_details::toSave()
 	int i = 0;
 	for (i = 0; i < size - 1; i++)
 	{
-		text += detalii_asig[i].toSave() + "\n";
+		text += detalii_asig[i]->toSave() + "\n";
 	}
 
-	text += detalii_asig[i].toSave();
+	text += detalii_asig[i]->toSave();
 	return text;
 }
 

@@ -1,16 +1,17 @@
-#include"Bike.h"
+#include"Pegas.h"
 class ControlBike
 {
 private:
 
-	Bike bicicleta[100];
-	int size = 0;
-
+	Bike** bicicleta;
+	
 public:
+
+	int size = 0;
 
 	ControlBike();
 
-	void add(Bike b);
+	void add(Bike* b);
 
 	void show();
 
@@ -32,9 +33,9 @@ public:
 
 	void updatebike_company(int bike_nr, string newbike_company);
 
-	Bike get_product(int bike_nr);
+	Bike* get_product(int bike_nr);
 
-	Bike get_product_cos(int bike_id);
+	Bike* get_product_cos(int bike_id);
 
 	void load();
 

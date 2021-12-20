@@ -2,14 +2,15 @@
 class ControlCustomer
 {
 private:
-	Customer client[100];
-	int size = 0;
-
+	Customer** client;
+	
 public:
+
+	int size = 0;
 
 	ControlCustomer();
 
-	void add(Customer a);
+	void add(Customer* a);
 
 	void show();
 
@@ -33,7 +34,7 @@ public:
 
 	void updatecustomer_username(string customer_name, string newcustomer_username);
 
-	Customer get_customer(string name);
+	Customer* get_customer(string name);
 
 	void load();
 

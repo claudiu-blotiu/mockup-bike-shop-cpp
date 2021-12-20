@@ -2,10 +2,12 @@
 
 ControlCustomer::ControlCustomer()
 {
+	client = new Customer * [100];
+
 	load();
 }
 
-void ControlCustomer::add(Customer a)
+void ControlCustomer::add(Customer* a)
 {
 	client[size] = a;
 	size++;
@@ -15,7 +17,7 @@ void ControlCustomer::show()
 {
 	for (int i = 0; i < size; i++)
 	{
-		cout << client[i].description() << endl;
+		cout << client[i]->description() << endl;
 	}
 }
 
@@ -23,7 +25,7 @@ int ControlCustomer::poz(string customer_name)
 {
 	for (int i = 0; i < size; i++)
 	{
-		if (client[i].getcustomer_name() == customer_name)
+		if (client[i]->getcustomer_name() == customer_name)
 		{
 			return i;
 		}
@@ -50,7 +52,7 @@ int ControlCustomer::nextId()
 		return 1;
 	}
 
-	return client[size - 1].getcustomer_id() + 1;
+	return client[size - 1]->getcustomer_id() + 1;
 }
 
 void ControlCustomer::updatecustomer_id(string customer_name, int newcustomer_id)
@@ -59,7 +61,7 @@ void ControlCustomer::updatecustomer_id(string customer_name, int newcustomer_id
 
 	if (p != -1)
 	{
-		client[p].setcustomer_id(newcustomer_id);
+		client[p]->setcustomer_id(newcustomer_id);
 	}
 	else
 	{
@@ -73,7 +75,7 @@ void ControlCustomer::updatecustomer_name(string customer_name, string newcustom
 
 	if (p != -1)
 	{
-		client[p].setcustomer_name(newcustomer_name);
+		client[p]->setcustomer_name(newcustomer_name);
 	}
 	else
 	{
@@ -87,7 +89,7 @@ void ControlCustomer::updatecustomer_mobile(string customer_name, string newcust
 
 	if (p != -1)
 	{
-		client[p].setcustomer_mobile(newcustomer_mobile);
+		client[p]->setcustomer_mobile(newcustomer_mobile);
 	}
 	else
 	{
@@ -101,7 +103,7 @@ void ControlCustomer::updatecustomer_email(string customer_name, string newcusto
 
 	if (p != -1)
 	{
-		client[p].setcustomer_email(newcustomer_email);
+		client[p]->setcustomer_email(newcustomer_email);
 	}
 	else
 	{
@@ -115,7 +117,7 @@ void ControlCustomer::updatecustomer_password(string customer_name, string newcu
 
 	if (p != -1)
 	{
-		client[p].setcustomer_password(newcustomer_password);
+		client[p]->setcustomer_password(newcustomer_password);
 	}
 	else
 	{
@@ -129,7 +131,7 @@ void ControlCustomer::updatecustomer_adress(string customer_name, string newcust
 
 	if (p != -1)
 	{
-		client[p].setcustomer_adress(newcustomer_adress);
+		client[p]->setcustomer_adress(newcustomer_adress);
 	}
 	else
 	{
@@ -143,7 +145,7 @@ void ControlCustomer::updatecustomer_username(string customer_name, string newcu
 
 	if (p != -1)
 	{
-		client[p].setcustomer_username(newcustomer_username);
+		client[p]->setcustomer_username(newcustomer_username);
 	}
 	else
 	{
@@ -174,13 +176,13 @@ void ControlCustomer::load()
 
 		if (customer_name != "undefined")
 		{
-			Customer c(customer_id, customer_name, customer_mobile, customer_email, customer_password, customer_adress, customer_username);
+			Customer* c=new Customer(customer_id, customer_name, customer_mobile, customer_email, customer_password, customer_adress, customer_username);
 			this->add(c);
 		}
 	}
 }
 
-Customer ControlCustomer::get_customer(string name)
+Customer* ControlCustomer::get_customer(string name)
 {
 	int pozitie = poz(name);
 
@@ -193,10 +195,10 @@ string ControlCustomer::toSave()
 	int i = 0;
 	for (i = 0; i < size - 1; i++)
 	{
-		text += client[i].toSave() + "\n";
+		text += client[i]->toSave() + "\n";
 	}
 
-	text += client[i].toSave();
+	text += client[i]->toSave();
 	return text;
 }
 

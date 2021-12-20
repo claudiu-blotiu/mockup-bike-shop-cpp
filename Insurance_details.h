@@ -1,4 +1,4 @@
-#include"ControlOrderDetails.h"
+#include"ControlInsurance.h"
 
 class Insurance_details
 {

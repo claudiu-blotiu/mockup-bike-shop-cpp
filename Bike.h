@@ -1,4 +1,9 @@
-#include"ControlUser.h"
+#include<iostream>
+#include<string>
+#include<fstream>
+
+using namespace std;
+
 class Bike
 {
 private:
@@ -32,9 +37,9 @@ public:
 	void setbike_company(string);
 	string getbike_company();
 
-	string description();
+	virtual string description();
 
-	string toSave();
+	virtual string toSave();
 
 
 

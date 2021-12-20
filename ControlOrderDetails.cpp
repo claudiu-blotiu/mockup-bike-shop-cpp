@@ -2,10 +2,12 @@
 
 ControlOrderDetails::ControlOrderDetails()
 {
+	detalii_comanda = new OrderDetails * [100];
+
 	load();
 }
 
-void ControlOrderDetails::add(OrderDetails a)
+void ControlOrderDetails::add(OrderDetails* a)
 {
 	detalii_comanda[size] = a;
 	size++;
@@ -15,7 +17,7 @@ void ControlOrderDetails::show()
 {
 	for (int i = 0; i < size; i++)
 	{
-		cout << detalii_comanda[i].description();
+		cout << detalii_comanda[i]->description();
 		cout << endl;
 	}
 }
@@ -24,7 +26,7 @@ int ControlOrderDetails::poz(int OrderDetails_order_Id)
 {
 	for (int i = 0; i < size; i++)
 	{
-		if (detalii_comanda[i].getOrderDetails_order_Id() == OrderDetails_order_Id)
+		if (detalii_comanda[i]->getOrderDetails_order_Id() == OrderDetails_order_Id)
 		{
 			return i;
 		}
@@ -36,7 +38,7 @@ int ControlOrderDetails::poz_1(int id)
 {
 	for (int i = 0; i < size; i++)
 	{
-		if (detalii_comanda[i].getOrderDetails_id() == id)
+		if (detalii_comanda[i]->getOrderDetails_id() == id)
 		{
 			return i;
 		}
@@ -71,7 +73,7 @@ int ControlOrderDetails::nextId() {
 		return 1;
 	}
 
-	return detalii_comanda[size - 1].getOrderDetails_id() + 1;
+	return detalii_comanda[size - 1]->getOrderDetails_id() + 1;
 }
 
 void ControlOrderDetails::updateOrderID(int OrderDetails_order_Id, int neworderId)
@@ -79,7 +81,7 @@ void ControlOrderDetails::updateOrderID(int OrderDetails_order_Id, int neworderI
 	int p = poz(OrderDetails_order_Id);
 	if (p != -1)
 	{
-		detalii_comanda[p].setOrderDetails_order_Id(neworderId);
+		detalii_comanda[p]->setOrderDetails_order_Id(neworderId);
 	}
 	else {
 		cout << "Order Id not found" << endl;
@@ -91,7 +93,7 @@ void ControlOrderDetails::updateBikeId(int OrderDetails_order_Id, int newBikeId)
 	int p = poz(OrderDetails_order_Id);
 	if (p != -1)
 	{
-		detalii_comanda[p].setOrderDetails_Bike_Id(newBikeId);
+		detalii_comanda[p]->setOrderDetails_Bike_Id(newBikeId);
 	}
 	else
 	{
@@ -100,14 +102,14 @@ void ControlOrderDetails::updateBikeId(int OrderDetails_order_Id, int newBikeId)
 }
 
 
-OrderDetails* ControlOrderDetails::getProducts(int OrderDetails_order_Id, int& number) {
+OrderDetails** ControlOrderDetails::getProducts(int OrderDetails_order_Id, int& number) {
 
 	number = 0;
-	OrderDetails* ordersDetails= new OrderDetails[100];
+	OrderDetails** ordersDetails= new OrderDetails*[100];
 	
 	for (int i = 0; i < size; i++) {
 
-		if (detalii_comanda[i].getOrderDetails_order_Id() == OrderDetails_order_Id) {
+		if (detalii_comanda[i]->getOrderDetails_order_Id() == OrderDetails_order_Id) {
 
 			ordersDetails[number] = detalii_comanda[i];
 
@@ -133,7 +135,7 @@ void ControlOrderDetails::load()
 		
 		if (id > 0) {
 
-			OrderDetails g(id, orderId, bikeId);
+			OrderDetails* g=new OrderDetails(id, orderId, bikeId);
 			this->add(g);
 		}
 
@@ -148,10 +150,10 @@ string ControlOrderDetails::toSave()
 	int i = 0;
 	for (i = 0; i < size - 1; i++)
 	{
-		text += detalii_comanda[i].toSave() + "\n";
+		text += detalii_comanda[i]->toSave() + "\n";
 	}
 
-	text += detalii_comanda[i].toSave();
+	text += detalii_comanda[i]->toSave();
 	return text;
 }
 

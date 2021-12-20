@@ -3,14 +3,15 @@ class ControlOrder
 {
 private:
 
-	Order comanda[100];
-	int size = 0;
-
+	Order** comanda;
+	
 public:
+
+	int size = 0;
 
 	ControlOrder();
 
-	void add(Order a);
+	void add(Order* a);
 
 	void show();
 

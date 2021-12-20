@@ -1,12 +1,23 @@
 #include "ViewUser.h"
 
-ViewUser::ViewUser(Customer c)
+ViewUser::ViewUser(Customer* c)
 {
 	this->client = c;
 
-	Order o(comanda.nextId(), c.getcustomer_id(), c.getcustomer_adress(), c.getcustomer_email(),"0",false);
+	produs = new ControlBike();
+	
+	detalii_asig = new Control_Insurance_details();
+	det_asig = new Insurance_details();
+	asigurat = new ControlInsurance();
+	asigurare = new Insurance();
+	lista_asig = new ControlInsurance_list();
+	lista_asigurari = new Insurance_List();
+	details = new ControlOrderDetails();
+	comanda = new ControlOrder();
 
-	order = o;
+	order=new Order(comanda->nextId(), c->getcustomer_id(), c->getcustomer_adress(), c->getcustomer_email(),"0",false);
+
+	lista_asigurari = new Insurance_List(lista_asig->nextId(), asigurare->getinsurance_id(), asigurare->getinsurance_bike_id(),"Type");
 }
 
 string ViewUser::meniu()
@@ -72,20 +83,20 @@ void ViewUser::add()
 
 	cin >> bike_nr;
 
-	Bike choise = produs.get_product(bike_nr);
+	Bike* choise = produs->get_product(bike_nr);
 
-	if (choise.getbike_nr() == bike_nr)
+	if (choise->getbike_nr() == bike_nr)
 	{
 		cout << "Introduceti tipul de bicicleta dorita" << endl;
 
 		string bike_type;
 		cin >> bike_type;
 
-		if (choise.getbike_type() == bike_type)
+		if (choise->getbike_type() == bike_type)
 		{
-			OrderDetails detalii(details.nextId(), order.getOrder_id(), choise.getbike_id());
+			OrderDetails* detalii=new OrderDetails(details->nextId(), order->getOrder_id(), choise->getbike_id());
 			
-			details.add(detalii);
+			details->add(detalii);
 		}
 		else
 		{
@@ -98,18 +109,18 @@ void ViewUser::viewBooking()
 {
 	int ct = 0;
 
-	for (int i = 1; i <= details.size; i++)
+	for (int i = 1; i <= details->size; i++)
 	{
-		OrderDetails* produse_cos = details.getProducts(i, ct);
+		OrderDetails** produse_cos = details->getProducts(i, ct);
 
 		for (int i = 0; i < ct; i++)
 		{
-			Bike p = produs.get_product_cos(produse_cos[i].getOrderDetails_Bike_Id());
+			Bike* p = produs->get_product_cos(produse_cos[i]->getOrderDetails_Bike_Id());
 
 			string descriere = "";
 
-			descriere += "Bike: " + to_string(p.getbike_nr()) + "\n";
-			descriere += "Tipul bicicletei: " + p.getbike_type() + "\n";
+			descriere += "Bike: " + to_string(p->getbike_nr()) + "\n";
+			descriere += "Tipul bicicletei: " + p->getbike_type() + "\n";
 
 			cout << descriere << endl;
 		}
@@ -125,25 +136,25 @@ void ViewUser::asigurare_produs()
 
 	cin >> insurance_type;
 
-	Insurance choise = asigurat.get_insurance2(insurance_type);
+	Insurance* choise = asigurat->get_insurance2(insurance_type);
 
-	if (choise.getinsurance_type() == insurance_type)
+	if (choise->getinsurance_type() == insurance_type)
 	{
 		cout << "Introduceti cantitatea dorita" << endl;
 
 		int cant;
 		cin >> cant;
 
-		if(choise.getinsurance_ammount() > cant)
+		if(choise->getinsurance_ammount() > cant)
 		{
-			Insurance_details detalii_asigurari(detalii_asig.nextId(), choise.getinsurance_id(), det_asig.getInsurance_details_Bike_Id(), cant, choise.getinsurance_price() * cant);
+			Insurance_details* detalii_asigurari=new Insurance_details(detalii_asig->nextId(), choise->getinsurance_id(), det_asig->getInsurance_details_Bike_Id(), cant, choise->getinsurance_price() * cant);
 
-			detalii_asig.add(detalii_asigurari);
+			detalii_asig->add(detalii_asigurari);
 			
-			Insurance_List lista(lista_asig.nextId(), choise.getinsurance_id(), det_asig.getInsurance_details_Bike_Id(), choise.getinsurance_type());
+			/*Insurance_List* lista=new Insurance_List(lista_asig->nextId(), choise->getinsurance_id(), det_asig->getInsurance_details_Bike_Id(), choise->getinsurance_type());
 
-			lista_asigurari = lista;
-			//lista_asig.add(lista_asigurari);
+			
+			lista_asig->add(lista);*/
 		}
 		else
 		{
@@ -161,23 +172,22 @@ void ViewUser::viewAsigurare()
 {
 	int ct = 0;
 
-	for (int i = 1; i <= detalii_asig.size; i++)
-	{
-		Insurance_details* asigurare_cos = detalii_asig.get_insurance(i, ct);
+	
+	
+		Insurance_details** asigurare_cos = detalii_asig->get_insurance(this->asigurare->getinsurance_id(), ct);
 
 		for (int i = 0; i < ct; i++)
 		{
-			cout << "TEST" << endl;
-			Insurance p = asigurat.get_insurance1(asigurare_cos[i].getInsurance_details_insurance_Id());
+			asigurat->get_insurance1(asigurare_cos[i]->getInsurance_details_insurance_Id());
 
-			string descriere = "";
+			/*string descriere = "";
 
-			descriere += "Bike: " + to_string(p.getinsurance_bike_id()) + "\n";
-			descriere += "Nr asigurare: " + p.getinsurance_number() + "\n";
+			descriere += "Bike: " + to_string(p->getinsurance_bike_id()) + "\n";
+			descriere += "Nr asigurare: " + p->getinsurance_number() + "\n";
 
-			cout << descriere << endl;
+			cout << descriere << endl;*/
 		}
-	}
+	
 }
 
 void ViewUser::remove()
@@ -190,17 +200,17 @@ void ViewUser::remove()
 
 	int ct = 0;
 
-	Bike produse = produs.get_product(bike_nr);
+	Bike* produse = produs->get_product(bike_nr);
 
-	for (int i = 1; i <= details.size; i++)
+	for (int i = 1; i <= details->size; i++)
 	{
-		OrderDetails* produseDetaliate = details.getProducts(i, ct);
+		OrderDetails** produseDetaliate = details->getProducts(i, ct);
 
 		for (int i = 0; i < ct; i++)
 		{
-			if (produseDetaliate[i].getOrderDetails_Bike_Id() == produse.getbike_id())
+			if (produseDetaliate[i]->getOrderDetails_Bike_Id() == produse->getbike_id())
 			{
-				details.Delete_2(produseDetaliate[i].getOrderDetails_Bike_Id());
+				details->Delete_2(produseDetaliate[i]->getOrderDetails_Bike_Id());
 			}
 		}
 	}
@@ -208,21 +218,21 @@ void ViewUser::remove()
 
 void ViewUser::rent()
 {
-	comanda.add(order);
+	comanda->add(order);
 
-	comanda.save();
+	comanda->save();
 
-	details.save();
+	details->save();
 
 }
 
 void ViewUser::save_insure()
 {
-	lista_asig.add(lista_asigurari);
+	lista_asig->add(lista_asigurari);
 
-	lista_asig.save();
+	lista_asig->save();
 
-	detalii_asig.save();
+	detalii_asig->save();
 }
 
 

@@ -2,10 +2,12 @@
 
 ControlBike::ControlBike()
 {
+	bicicleta = new Bike * [100];
+
 	load();
 }
 
-void ControlBike::add(Bike b)
+void ControlBike::add(Bike* b)
 {
 	bicicleta[size] = b;
 	size++;
@@ -15,7 +17,7 @@ void ControlBike::show()
 {
 	for (int i = 0; i < size; i++)
 	{
-		cout << bicicleta[i].description() << endl;
+		cout << bicicleta[i]->description() << endl;
 	}
 }
 
@@ -23,7 +25,7 @@ int ControlBike::poz(int bike_nr)
 {
 	for (int i = 0; i < size; i++)
 	{
-		if (bicicleta[i].getbike_nr() == bike_nr)
+		if (bicicleta[i]->getbike_nr() == bike_nr)
 		{
 			return i;
 		}
@@ -35,7 +37,7 @@ int ControlBike::poz1(string bike_type)
 {
 	for (int i = 0; i < size; i++)
 	{
-		if (bicicleta[i].getbike_type() == bike_type)
+		if (bicicleta[i]->getbike_type() == bike_type)
 		{
 			return i;
 		}
@@ -59,7 +61,7 @@ int ControlBike::nextId()
 		return 1;
 	}
 
-	return bicicleta[size - 1].getbike_id() + 1;
+	return bicicleta[size - 1]->getbike_id() + 1;
 }
 
 void ControlBike::updatebike_id(int bike_nr, int newbike_id)
@@ -68,7 +70,7 @@ void ControlBike::updatebike_id(int bike_nr, int newbike_id)
 
 	if (p != -1)
 	{
-		bicicleta[p].setbike_id(newbike_id);
+		bicicleta[p]->setbike_id(newbike_id);
 	}
 	else
 	{
@@ -82,7 +84,7 @@ void ControlBike::updatebike_customer_id(int bike_nr, int newbike_customer_id)
 
 	if (p != -1)
 	{
-		bicicleta[p].setbike_customer_id(newbike_customer_id);
+		bicicleta[p]->setbike_customer_id(newbike_customer_id);
 	}
 	else
 	{
@@ -96,7 +98,7 @@ void ControlBike::updatebike_nr(int bike_nr, int newbike_nr)
 
 	if (p != -1)
 	{
-		bicicleta[p].setbike_nr(newbike_nr);
+		bicicleta[p]->setbike_nr(newbike_nr);
 	}
 	else
 	{
@@ -110,7 +112,7 @@ void ControlBike::updatebike_type(int bike_nr, string newbike_type)
 
 	if (p != -1)
 	{
-		bicicleta[p].setbike_type(newbike_type);
+		bicicleta[p]->setbike_type(newbike_type);
 	}
 	else
 	{
@@ -124,7 +126,7 @@ void ControlBike::updatebike_company(int bike_nr, string newbike_company)
 
 	if (p != -1)
 	{
-		bicicleta[p].setbike_company(newbike_company);
+		bicicleta[p]->setbike_company(newbike_company);
 	}
 	else
 	{
@@ -132,18 +134,18 @@ void ControlBike::updatebike_company(int bike_nr, string newbike_company)
 	}
 }
 
-Bike ControlBike::get_product(int bike_nr)
+Bike* ControlBike::get_product(int bike_nr)
 {
 	int pozitie = poz(bike_nr);
 
 	return bicicleta[pozitie];
 }
 
-Bike ControlBike::get_product_cos(int bike_id)
+Bike* ControlBike::get_product_cos(int bike_id)
 {
 	for (int i = 0; i < size; i++)
 	{
-		if (bicicleta[i].getbike_id() == bike_id)
+		if (bicicleta[i]->getbike_id() == bike_id)
 		{
 			return bicicleta[i];
 		}
@@ -156,21 +158,44 @@ void ControlBike::load()
 
 	while (!read.eof())
 	{
-		int bike_id;
-		read >> bike_id;
-		int bike_customer_id;
-		read >> bike_customer_id;
-		int bike_nr;
-		read >> bike_nr;
 		string bike_type;
 		read >> bike_type;
-		string bike_company;
-		read >> bike_company;
 		
-		if (bike_nr != 0)
+		if (bike_type != "")
 		{
-			Bike a(bike_id, bike_customer_id, bike_nr, bike_type, bike_company);
-			this->add(a);
+			int bike_id;
+			read >> bike_id;
+			int bike_customer_id;
+			read >> bike_customer_id;
+			int bike_nr;
+			read >> bike_nr;
+			string bike_company;
+			read >> bike_company;
+
+			if (bike_type == "BMX")
+			{
+				int varstaMinima;
+				read >> varstaMinima;
+
+				Bike* a = new BMX(varstaMinima, bike_id, bike_customer_id, bike_nr, bike_company);
+				this->add(a);
+			}
+			if (bike_type == "MTB")
+			{
+				string tipCadru;
+				read >> tipCadru;
+
+				Bike* b = new MTB(tipCadru, bike_id, bike_customer_id, bike_nr, bike_company);
+				this->add(b);
+			}
+			if (bike_type == "Pegas")
+			{
+				int anAparitie;
+				read >> anAparitie;
+
+				Bike* c = new Pegas(anAparitie, bike_id, bike_customer_id, bike_nr, bike_company);
+				this->add(c);
+			}
 		}
 	}
 }
@@ -181,10 +206,10 @@ string ControlBike::toSave()
 	int i = 0;
 	for (i = 0; i < size - 1; i++)
 	{
-		text += bicicleta[i].toSave() + "\n";
+		text += bicicleta[i]->toSave() + "\n";
 	}
 
-	text += bicicleta[i].toSave();
+	text += bicicleta[i]->toSave();
 	return text;
 }
 

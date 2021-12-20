@@ -3,14 +3,15 @@ class ControlInsurance_list
 {
 private:
 
-	Insurance_List lista_asig[100];
-	int size = 0;
-
+	Insurance_List** lista_asig;
+	
 public:
+
+	int size = 0;
 
 	ControlInsurance_list();
 
-	void add(Insurance_List a);
+	void add(Insurance_List* a);
 
 	void show();
 
@@ -26,7 +27,7 @@ public:
 
 	void update_Insurance_List_insurance_type(int Insurance_List_insurance_Id, string New_Insurance_List_insurance_type);
 
-	Insurance_List* get_insurance_list(int Insurance_List_insurance_Id, int& nr);
+	Insurance_List** get_insurance_list(int Insurance_List_insurance_Id, int& nr);
 
 	void load();
 

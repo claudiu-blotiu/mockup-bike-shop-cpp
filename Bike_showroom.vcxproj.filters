@@ -18,12 +18,6 @@
     <ClCompile Include="Bike_showroom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="User.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ControlUser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Bike.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -36,34 +30,10 @@
     <ClCompile Include="ControlInsurance.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Payment.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ControlPayment.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Booking.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ControlBooking.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Customer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ControlCustomer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Permission.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ControlPermission.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Role.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ControlRole.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ViewUser.cpp">
@@ -93,14 +63,17 @@
     <ClCompile Include="ControlInsurance_list.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BMX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MTB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pegas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="User.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ControlUser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Bike.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -113,34 +86,10 @@
     <ClInclude Include="ControlInsurance.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Payment.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ControlPayment.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Booking.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ControlBooking.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Customer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ControlCustomer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Permission.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ControlPermission.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Role.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ControlRole.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ViewUser.h">
@@ -170,30 +119,24 @@
     <ClInclude Include="ControlInsurance_list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BMX.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MTB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pegas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="User.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
     <Text Include="Bike.txt">
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="Insurance.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="Payment.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="Booking.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
     <Text Include="Customer.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="Permission.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="Role.txt">
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="Order.txt">

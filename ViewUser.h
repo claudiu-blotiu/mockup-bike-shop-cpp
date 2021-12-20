@@ -1,23 +1,23 @@
-#include"ControlInsurance_list.h"
+#include"ControlCustomer.h"
 
 class ViewUser
 {
 private:
-	Customer client;
-	ControlBike produs;
-	Control_Insurance_details detalii_asig;
-	Insurance_details det_asig;
-	ControlInsurance asigurat;
-	Insurance asigurare;
-	ControlInsurance_list lista_asig;
-	Insurance_List lista_asigurari;
-	ControlOrderDetails details;
-	ControlOrder comanda;
-	Order order;
+	Customer *client;
+	ControlBike* produs;
+	Control_Insurance_details* detalii_asig;
+	Insurance_details* det_asig;
+	ControlInsurance* asigurat;
+	Insurance* asigurare;
+	ControlInsurance_list* lista_asig;
+	Insurance_List* lista_asigurari;
+	ControlOrderDetails* details;
+	ControlOrder* comanda;
+	Order *order;
 
 public:
 
-	ViewUser(Customer c);
+	ViewUser(Customer* c);
 
 	
 

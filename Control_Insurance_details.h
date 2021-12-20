@@ -4,7 +4,7 @@ class Control_Insurance_details
 {
 private:
 
-	Insurance_details detalii_asig[100];
+	Insurance_details** detalii_asig;
 
 public:
 
@@ -12,7 +12,7 @@ public:
 
 	Control_Insurance_details();
 
-	void add(Insurance_details a);
+	void add(Insurance_details* a);
 
 	void show();
 
@@ -32,7 +32,7 @@ public:
 
 	void update_Insurance_details_insurance_price(int Insurance_details_insurance_Id, int New_Insurance_details_insurance_price);
 
-	Insurance_details* get_insurance(int insurance_id, int& nr);
+	Insurance_details** get_insurance(int insurance_id, int& nr);
 
 	void load();
 

@@ -1,10 +1,12 @@
 #include "ControlInsurance_list.h"
 ControlInsurance_list::ControlInsurance_list()
 {
+	lista_asig = new Insurance_List * [100];
+
 	load();
 }
 
-void ControlInsurance_list::add(Insurance_List a)
+void ControlInsurance_list::add(Insurance_List* a)
 {
 	lista_asig[size] = a;
 	size++;
@@ -14,7 +16,7 @@ void ControlInsurance_list::show()
 {
 	for (int i = 0; i < size; i++)
 	{
-		cout << lista_asig[i].description() << endl;
+		cout << lista_asig[i]->description() << endl;
 	}
 }
 
@@ -22,7 +24,7 @@ int ControlInsurance_list::poz(int Insurance_List_insurance_Id)
 {
 	for (int i = 0; i < size; i++)
 	{
-		if (lista_asig[i].getInsurance_List_insurance_Id() == Insurance_List_insurance_Id)
+		if (lista_asig[i]->getInsurance_List_insurance_Id() == Insurance_List_insurance_Id)
 		{
 			return i;
 		}
@@ -46,7 +48,7 @@ int ControlInsurance_list::nextId()
 		return 1;
 	}
 
-	return lista_asig[size - 1].getInsurance_List_id() + 1;
+	return lista_asig[size - 1]->getInsurance_List_id() + 1;
 }
 
 void ControlInsurance_list::update_Insurance_List_insurance_Id(int Insurance_List_insurance_Id, int New_Insurance_List_insurance_Id)
@@ -55,7 +57,7 @@ void ControlInsurance_list::update_Insurance_List_insurance_Id(int Insurance_Lis
 
 	if (p != -1)
 	{
-		lista_asig[p].setInsurance_List_insurance_Id(New_Insurance_List_insurance_Id);
+		lista_asig[p]->setInsurance_List_insurance_Id(New_Insurance_List_insurance_Id);
 	}
 	else
 	{
@@ -69,7 +71,7 @@ void ControlInsurance_list::update_Insurance_List_Bike_Id(int Insurance_List_ins
 
 	if (p != -1)
 	{
-		lista_asig[p].setInsurance_List_Bike_Id(New_Insurance_List_Bike_Id);
+		lista_asig[p]->setInsurance_List_Bike_Id(New_Insurance_List_Bike_Id);
 	}
 	else
 	{
@@ -83,7 +85,7 @@ void ControlInsurance_list::update_Insurance_List_insurance_type(int Insurance_L
 
 	if (p != -1)
 	{
-		lista_asig[p].setInsurance_List_insurance_type(New_Insurance_List_insurance_type);
+		lista_asig[p]->setInsurance_List_insurance_type(New_Insurance_List_insurance_type);
 	}
 	else
 	{
@@ -91,14 +93,14 @@ void ControlInsurance_list::update_Insurance_List_insurance_type(int Insurance_L
 	}
 }
 
-Insurance_List* ControlInsurance_list::get_insurance_list(int Insurance_List_insurance_Id, int& nr)
+Insurance_List** ControlInsurance_list::get_insurance_list(int Insurance_List_insurance_Id, int& nr)
 {
 	nr = 0;
-	Insurance_List* insurance_list = new Insurance_List[100];
+	Insurance_List** insurance_list = new Insurance_List*[100];
 
 	for (int i = 0; i < size; i++) {
 
-		if (lista_asig[i].getInsurance_List_insurance_Id() == Insurance_List_insurance_Id) {
+		if (lista_asig[i]->getInsurance_List_insurance_Id() == Insurance_List_insurance_Id) {
 
 			insurance_list[nr] = lista_asig[i];
 
@@ -126,7 +128,7 @@ void ControlInsurance_list::load()
 		
 		if (Insurance_List_id > 0)
 		{
-			Insurance_List o(Insurance_List_id, Insurance_List_insurance_Id, Insurance_List_Bike_Id, Insurance_List_insurance_type);
+			Insurance_List* o=new Insurance_List(Insurance_List_id, Insurance_List_insurance_Id, Insurance_List_Bike_Id, Insurance_List_insurance_type);
 			this->add(o);
 		}
 
@@ -139,9 +141,9 @@ string ControlInsurance_list::toSave()
 	int i = 0;
 	for (i = 0; i < size - 1; i++)
 	{
-		text += lista_asig[i].toSave() + "\n";
+		text += lista_asig[i]->toSave() + "\n";
 	}
-	text += lista_asig[i].toSave();
+	text += lista_asig[i]->toSave();
 	return text;
 }
 

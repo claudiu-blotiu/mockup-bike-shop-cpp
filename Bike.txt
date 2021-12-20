@@ -1,3 +1,3 @@
-1 1 1 MTB pegas
-2 2 2 BMX Alice
-3 3 3 Course Shimano
+BMX 1 1 1 Shio 16
+MTB 2 2 2 Alice Inalt
+Pegas 3 3 3 Shimano 1985

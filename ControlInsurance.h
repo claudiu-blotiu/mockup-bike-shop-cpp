@@ -3,14 +3,15 @@ class ControlInsurance
 {
 private:
 
-	Insurance asigurare[100];
-	int size = 0;
-
+	Insurance** asigurare;
+	
 public:
+	
+	int size = 0;
 
 	ControlInsurance();
 
-	void add(Insurance i);
+	void add(Insurance* i);
 
 	void show();
 
@@ -36,9 +37,9 @@ public:
 
 	void updateinsurance_expire(string insurance_number, string newinsurance_expire);
 
-	Insurance get_insurance1(int insurance_id);
+	void get_insurance1(int insurance_id);
 
-	Insurance get_insurance2(string insurance_type);
+	Insurance* get_insurance2(string insurance_type);
 
 	void load();
 

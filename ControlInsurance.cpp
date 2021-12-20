@@ -2,10 +2,12 @@
 
 ControlInsurance::ControlInsurance()
 {
+	asigurare = new Insurance * [100];
+
 	load();
 }
 
-void ControlInsurance::add(Insurance i)
+void ControlInsurance::add(Insurance* i)
 {
 	asigurare[size] = i;
 	size++;
@@ -15,7 +17,7 @@ void ControlInsurance::show()
 {
 	for (int i = 0; i < size; i++)
 	{
-		cout << asigurare[i].description() << endl;
+		cout << asigurare[i]->description() << endl;
 	}
 }
 
@@ -23,7 +25,7 @@ int ControlInsurance::poz(string insurance_type)
 {
 	for (int i = 0; i < size; i++)
 	{
-		if (asigurare[i].getinsurance_type() == insurance_type)
+		if (asigurare[i]->getinsurance_type() == insurance_type)
 		{
 			return i;
 		}
@@ -35,7 +37,7 @@ int ControlInsurance::poz_asig(int insurance_id)
 {
 	for (int i = 0; i < size; i++)
 	{
-		if (asigurare[i].getinsurance_id() == insurance_id)
+		if (asigurare[i]->getinsurance_id() == insurance_id)
 		{
 			return i;
 		}
@@ -59,7 +61,7 @@ int ControlInsurance::nextId()
 		return 1;
 	}
 
-	return asigurare[size - 1].getinsurance_id() + 1;
+	return asigurare[size - 1]->getinsurance_id() + 1;
 }
 
 void ControlInsurance::updateinsurance_id(string insurance_number, int newinsurance_id)
@@ -68,7 +70,7 @@ void ControlInsurance::updateinsurance_id(string insurance_number, int newinsura
 
 	if (p != -1)
 	{
-		asigurare[p].setinsurance_id(newinsurance_id);
+		asigurare[p]->setinsurance_id(newinsurance_id);
 	}
 	else
 	{
@@ -82,7 +84,7 @@ void ControlInsurance::updateinsurance_bike_id(string insurance_number, int newi
 
 	if (p != -1)
 	{
-		asigurare[p].setinsurance_bike_id(newinsurance_bike_id);
+		asigurare[p]->setinsurance_bike_id(newinsurance_bike_id);
 	}
 	else
 	{
@@ -96,7 +98,7 @@ void ControlInsurance::updateinsurance_ammount(string insurance_number, int newi
 
 	if (p != -1)
 	{
-		asigurare[p].setinsurance_ammount(newinsurance_ammount);
+		asigurare[p]->setinsurance_ammount(newinsurance_ammount);
 	}
 	else
 	{
@@ -110,7 +112,7 @@ void ControlInsurance::updateinsurance_type(string insurance_number, string newi
 
 	if (p != -1)
 	{
-		asigurare[p].setinsurance_type(newinsurance_type);
+		asigurare[p]->setinsurance_type(newinsurance_type);
 	}
 	else
 	{
@@ -124,7 +126,7 @@ void ControlInsurance::updateinsurance_date(string insurance_number, string newi
 
 	if (p != -1)
 	{
-		asigurare[p].setinsurance_date(newinsurance_date);
+		asigurare[p]->setinsurance_date(newinsurance_date);
 	}
 	else
 	{
@@ -138,7 +140,7 @@ void ControlInsurance::updateinsurance_number(string insurance_number, string ne
 
 	if (p != -1)
 	{
-		asigurare[p].setinsurance_number(newinsurance_number);
+		asigurare[p]->setinsurance_number(newinsurance_number);
 	}
 	else
 	{
@@ -152,7 +154,7 @@ void ControlInsurance::updateinsurance_expire(string insurance_number, string ne
 
 	if (p != -1)
 	{
-		asigurare[p].setinsurance_expire(newinsurance_expire);
+		asigurare[p]->setinsurance_expire(newinsurance_expire);
 	}
 	else
 	{
@@ -160,14 +162,22 @@ void ControlInsurance::updateinsurance_expire(string insurance_number, string ne
 	}
 }
 
-Insurance ControlInsurance::get_insurance1(int insurance_id)
+void ControlInsurance::get_insurance1(int insurance_id)
 {
-	int pozitie = poz_asig(insurance_id);
+	for (int i = 0; i < size; i++)
+	{
+		if (asigurare[i]->getinsurance_id() == insurance_id)
+		{
+			cout << asigurare[i]->description() << endl;
+		}
+	}
 
-	return asigurare[pozitie];
+	/*int pozitie = poz_asig(insurance_id);
+
+	return asigurare[pozitie];*/
 }
 
-Insurance ControlInsurance::get_insurance2(string insurance_type)
+Insurance* ControlInsurance::get_insurance2(string insurance_type)
 {
 	int pozitie = poz(insurance_type);
 
@@ -199,7 +209,7 @@ void ControlInsurance::load()
 
 		if (insurance_id > 0)
 		{
-			Insurance a(insurance_id, insurance_bike_id, insurance_ammount, insurance_type, insurance_date, insurance_number, insurance_expire, insurance_price);
+			Insurance* a=new Insurance(insurance_id, insurance_bike_id, insurance_ammount, insurance_type, insurance_date, insurance_number, insurance_expire, insurance_price);
 			this->add(a);
 		}
 	}
@@ -211,10 +221,10 @@ string ControlInsurance::toSave()
 	int i = 0;
 	for (i = 0; i < size - 1; i++)
 	{
-		text += asigurare[i].toSave() + "\n";
+		text += asigurare[i]->toSave() + "\n";
 	}
 
-	text += asigurare[i].toSave();
+	text += asigurare[i]->toSave();
 	return text;
 }
 

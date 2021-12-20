@@ -141,71 +141,52 @@
   <ItemGroup>
     <ClCompile Include="Bike.cpp" />
     <ClCompile Include="Bike_showroom.cpp" />
-    <ClCompile Include="Booking.cpp" />
+    <ClCompile Include="BMX.cpp" />
     <ClCompile Include="ControlBike.cpp" />
-    <ClCompile Include="ControlBooking.cpp" />
     <ClCompile Include="ControlCustomer.cpp" />
     <ClCompile Include="ControlInsurance.cpp" />
     <ClCompile Include="ControlInsurance_list.cpp" />
     <ClCompile Include="ControlOrder.cpp" />
     <ClCompile Include="ControlOrderDetails.cpp" />
-    <ClCompile Include="ControlPayment.cpp" />
-    <ClCompile Include="ControlPermission.cpp" />
-    <ClCompile Include="ControlRole.cpp" />
-    <ClCompile Include="ControlUser.cpp" />
     <ClCompile Include="Control_Insurance_details.cpp" />
     <ClCompile Include="Customer.cpp" />
     <ClCompile Include="Insurance.cpp" />
     <ClCompile Include="Insurance_details.cpp" />
     <ClCompile Include="Insurance_List.cpp" />
+    <ClCompile Include="MTB.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="OrderDetails.cpp" />
-    <ClCompile Include="Payment.cpp" />
-    <ClCompile Include="Permission.cpp" />
-    <ClCompile Include="Role.cpp" />
-    <ClCompile Include="User.cpp" />
+    <ClCompile Include="Pegas.cpp" />
     <ClCompile Include="ViewUser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bike.h" />
-    <ClInclude Include="Booking.h" />
+    <ClInclude Include="BMX.h" />
     <ClInclude Include="ControlBike.h" />
-    <ClInclude Include="ControlBooking.h" />
     <ClInclude Include="ControlCustomer.h" />
     <ClInclude Include="ControlInsurance.h" />
     <ClInclude Include="ControlInsurance_list.h" />
     <ClInclude Include="ControlOrder.h" />
     <ClInclude Include="ControlOrderDetails.h" />
-    <ClInclude Include="ControlPayment.h" />
-    <ClInclude Include="ControlPermission.h" />
-    <ClInclude Include="ControlRole.h" />
-    <ClInclude Include="ControlUser.h" />
     <ClInclude Include="Control_Insurance_details.h" />
     <ClInclude Include="Customer.h" />
     <ClInclude Include="Insurance.h" />
     <ClInclude Include="Insurance_details.h" />
     <ClInclude Include="Insurance_List.h" />
+    <ClInclude Include="MTB.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="OrderDetails.h" />
-    <ClInclude Include="Payment.h" />
-    <ClInclude Include="Permission.h" />
-    <ClInclude Include="Role.h" />
-    <ClInclude Include="User.h" />
+    <ClInclude Include="Pegas.h" />
     <ClInclude Include="ViewUser.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Bike.txt" />
-    <Text Include="Booking.txt" />
     <Text Include="Customer.txt" />
     <Text Include="Insurance.txt" />
     <Text Include="Insurance_details.txt" />
     <Text Include="Insurance_List.txt" />
     <Text Include="Order.txt" />
     <Text Include="OrderDetails.txt" />
-    <Text Include="Payment.txt" />
-    <Text Include="Permission.txt" />
-    <Text Include="Role.txt" />
-    <Text Include="User.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

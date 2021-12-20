@@ -2,10 +2,12 @@
 
 ControlOrder::ControlOrder()
 {
+	comanda = new Order * [100];
+
 	load();
 }
 
-void ControlOrder::add(Order a)
+void ControlOrder::add(Order* a)
 {
 	comanda[size] = a;
 	size++;
@@ -15,7 +17,7 @@ void ControlOrder::show()
 {
 	for (int i = 0; i < size; i++)
 	{
-		cout << comanda[i].description() << endl;
+		cout << comanda[i]->description() << endl;
 	}
 }
 
@@ -23,7 +25,7 @@ int ControlOrder::poz(int Order_id)
 {
 	for (int i = 0; i < size; i++)
 	{
-		if (comanda[i].getOrder_id() == Order_id)
+		if (comanda[i]->getOrder_id() == Order_id)
 		{
 			return i;
 		}
@@ -48,7 +50,7 @@ int ControlOrder::nextId()
 		return 1;
 	}
 
-	return comanda[size - 1].getOrder_id() + 1;
+	return comanda[size - 1]->getOrder_id() + 1;
 }
 
 void ControlOrder::update_Order_id(int Order_id, int New_Order_id)
@@ -57,7 +59,7 @@ void ControlOrder::update_Order_id(int Order_id, int New_Order_id)
 
 	if (p != -1)
 	{
-		comanda[p].setOrder_id(New_Order_id);
+		comanda[p]->setOrder_id(New_Order_id);
 	}
 	else
 	{
@@ -71,7 +73,7 @@ void ControlOrder::update_Order_customerId(int Order_id, int New_Order_customerI
 
 	if (p != -1)
 	{
-		comanda[p].setOrder_customerId(New_Order_customerId);
+		comanda[p]->setOrder_customerId(New_Order_customerId);
 	}
 	else
 	{
@@ -85,7 +87,7 @@ void ControlOrder::update_Order_Adress(int Order_id, string New_Order_Adress)
 
 	if (p != -1)
 	{
-		comanda[p].setOrder_Adress(New_Order_Adress);
+		comanda[p]->setOrder_Adress(New_Order_Adress);
 	}
 	else
 	{
@@ -99,7 +101,7 @@ void ControlOrder::update_Order_Email(int Order_id, string New_Order_Email)
 
 	if (p != -1)
 	{
-		comanda[p].setOrder_Email(New_Order_Email);
+		comanda[p]->setOrder_Email(New_Order_Email);
 	}
 	else
 	{
@@ -113,7 +115,7 @@ void ControlOrder::update_Order_Date(int Order_id, string New_Order_Date)
 
 	if (p != -1)
 	{
-		comanda[p].setOrder_Date(New_Order_Date);
+		comanda[p]->setOrder_Date(New_Order_Date);
 	}
 	else
 	{
@@ -127,7 +129,7 @@ void ControlOrder::update_Order_Status(int Order_id, bool New_Order_Status)
 
 	if (p != -1)
 	{
-		comanda[p].setOrder_Status(New_Order_Status);
+		comanda[p]->setOrder_Status(New_Order_Status);
 	}
 	else
 	{
@@ -156,7 +158,7 @@ void ControlOrder::load()
 
 		if (Order_customerId > 0)
 		{
-			Order o(Order_id, Order_customerId,Order_Adress, Order_Email, Order_Date, Order_status);
+			Order* o=new Order(Order_id, Order_customerId,Order_Adress, Order_Email, Order_Date, Order_status);
 			this->add(o);
 		}
 
@@ -169,10 +171,10 @@ string ControlOrder::toSave()
 	int i = 0;
 	for (i = 0; i < size - 1; i++)
 	{
-		text += comanda[i].toSave() + "\n";
+		text += comanda[i]->toSave() + "\n";
 	}
 
-	text += comanda[i].toSave();
+	text += comanda[i]->toSave();
 	return text;
 }
 
